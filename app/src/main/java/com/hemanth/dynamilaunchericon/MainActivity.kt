@@ -1,6 +1,7 @@
 package com.hemanth.dynamilaunchericon
 
 import android.content.ComponentName
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.Button
@@ -18,24 +19,30 @@ class MainActivity : AppCompatActivity() {
             packageManager.setComponentEnabledSetting(ComponentName(applicationContext.packageName, applicationContext.packageName + ".One"),
                 PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP)
             appIconNumber = 1
+            unInstallOldICon(appIconNumber)
+            startActivity(Intent(this, SecondActivity::class.java))
         }
 
         findViewById<Button>(R.id.btnTwo).setOnClickListener {
             packageManager.setComponentEnabledSetting(ComponentName(applicationContext.packageName, applicationContext.packageName + ".Two"),
                 PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP)
             appIconNumber = 2
+            unInstallOldICon(appIconNumber)
+            startActivity(Intent(this, SecondActivity::class.java))
         }
 
         findViewById<Button>(R.id.btnThree).setOnClickListener {
             packageManager.setComponentEnabledSetting(ComponentName(applicationContext.packageName, applicationContext.packageName + ".Three"),
                 PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP)
             appIconNumber = 3
+            unInstallOldICon(appIconNumber)
+            startActivity(Intent(this, SecondActivity::class.java))
         }
 
     }
 
     override fun onStop() {
-        unInstallOldICon(appIconNumber)
+//        unInstallOldICon(appIconNumber)
         super.onStop()
     }
 
